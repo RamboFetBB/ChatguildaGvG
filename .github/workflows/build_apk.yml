@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch: # Permite disparar o build manualmente por um botão no GitHub!
+  workflow_dispatch: # Isso cria um botão para rodar manualmente!
 
 jobs:
   build:
@@ -23,9 +23,10 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
         with:
-          gradle-version: '8.4' # O GitHub baixa o Gradle na hora, ignorando a falta do wrapper
+          gradle-version: '8.4'
 
       - name: Build APK (Sem Wrapper)
+        # Usa 'gradle' direto em vez de './gradlew'
         run: gradle assembleDebug --stacktrace --info
 
       - name: Upload APK
