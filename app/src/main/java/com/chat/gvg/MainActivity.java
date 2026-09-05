@@ -149,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    onDestroy() {
+    protected void onDestroy() {
         super.onDestroy();
         if (timer != null) timer.cancel();
     }
